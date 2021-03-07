@@ -14,7 +14,7 @@ const HomePage: React.FC = () => {
             <a href="https://unsplash.com/license" target="__blank" >freely-usable images.</a> 
           </h2>
           <h2>Powered by creators everywhere.</h2>
-          <SearchBar />
+          <SearchBar containerStyling={false}/>
           <p><b>Trending</b>: flower, wallpapers, backgrounds, happy, love</p>
         </div>
       </div>

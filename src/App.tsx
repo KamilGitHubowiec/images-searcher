@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import ResultsPage from "./pages/ResultsPage/ResultsPage";

@@ -18,12 +18,6 @@ const ResultsPage: React.FC = () => {
   const { windowHeight, windowWidth } = useWindowDimensions();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
-  // const dispatch = useDispatch();
-  // const photosData = useSelector((state: RootStateOrAny) => state.photosData);
-  // const photosArr = photosData.photos.results
-  // const {loading, error, photos} = photosData;
-  // dispatch(listPhotos(query, page));
-
   useEffect(() => {
     const url = getPhotosUrl(query, page);
     axios.get(url).then((response) => {
@@ -112,7 +106,7 @@ const ResultsPage: React.FC = () => {
     <div>
       <nav className={styles.navbar}>
         <Link className={styles.logo} to="/">{Icons.iconUnsplash}</Link>
-        <SearchBar/>
+        <SearchBar containerStyling={true}/>
       </nav>
       {photos.length > 0 && renderResults()}
       {isModalOpen && <PopupModal photos={photos} selectedPhotoId={photoId} closeModal={closePopupModal}/>}

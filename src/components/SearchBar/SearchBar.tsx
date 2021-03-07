@@ -5,11 +5,7 @@ import { Icons } from "../../helpers/Icons";
 import firebase from "../../firebase";
 import "firebase/firestore";
 
-// interface Props {
-//   containerStyling: string
-// }
-
-const SearchBar: React.FC = () => {
+const SearchBar = ({ containerStyling }: any) => {
   const [query, setQuery] = useState<string>("");
   const history = useHistory();
   const [shouldSuggest, setShouldSuggest] = useState<boolean>(false);
@@ -83,7 +79,7 @@ const SearchBar: React.FC = () => {
   }
 
   return (
-    <form className={styles.rounded_searchbar_form} onSubmit={(e) => searchPhotos(e)}>
+    <form className={containerStyling ? styles.rounded_searchbar_form : styles.squared_searchbar_form} onSubmit={(e) => searchPhotos(e)}>
       <button type="submit" className={styles.button_search}>{Icons.iconSearch}</button>
       <input
       onChange={(e) => setSearchQuery(e)} 
