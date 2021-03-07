@@ -56,11 +56,11 @@ const SearchBar = ({ containerStyling }: any) => {
     let uniqueSuggestions: any; 
     let uniqueSuggestionsArr: any;
 
-    suggestionsArr = suggestions.filter((word: any) => word.substr(0, searchedTerm.length) === searchedTerm).sort();
+    suggestionsArr = suggestions.filter((word: any) => word.substr(0, searchedTerm.length).toLowerCase() === searchedTerm.toLowerCase()).sort();
 
     if (suggestionsArr.length < 5) {
       suggestions.sort().filter((word: any) => {
-        if (word.trim().includes(searchedTerm.trim())) suggestionsArr.push(word);
+        if (word.trim().toLowerCase().includes(searchedTerm.trim().toLowerCase())) suggestionsArr.push(word);
       })
     }
 
