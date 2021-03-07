@@ -1,4 +1,4 @@
-const APP_ACCESS_KEY: string = "i5C6TJTnfiMGXZD3XDzdTjj7KKXgcGpSTXnGHLahO_U";
+const APP_ACCESS_KEY: any = process.env.REACT_APP_ACCESS_KEY;
 
 export const getPhotosUrl = (query: string, page: number = 1) => {
   return `https://api.unsplash.com/search/photos?client_id=${APP_ACCESS_KEY}&query=${query}&page=${page}&per_page=30`;
