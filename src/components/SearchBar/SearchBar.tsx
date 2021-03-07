@@ -56,26 +56,32 @@ const SearchBar = ({ containerStyling }: any) => {
     let uniqueSuggestions: any; 
     let uniqueSuggestionsArr: any;
 
-    suggestionsArr = suggestions.filter((word: any) => word.substr(0, searchedTerm.length) === searchedTerm);
+    suggestionsArr = suggestions.filter((word: any) => word.substr(0, searchedTerm.length) === searchedTerm).sort();
+
+    if (suggestionsArr.length < 5) {
+      suggestions.sort().filter((word: any) => {
+        if (word.trim().includes(searchedTerm.trim())) suggestionsArr.push(word);
+      })
+    }
+
     uniqueSuggestions = new Set(suggestionsArr);
-    
-    // if (uniqueSuggestions.size < 5) {
-    //   state.filter((word) => {
-    //     word.includes(searchedTerm);
-    //     uniqueSuggestions.add(word);
-    //   })
-    // }
-
     uniqueSuggestionsArr = Array.from(uniqueSuggestions);
-    uniqueSuggestionsArr.sort();
 
-    if (uniqueSuggestionsArr.length > 0) return (
-      <div className={styles.suggestions_container}>
-        {uniqueSuggestionsArr.slice(0, 5).map((suggestion: any) => {
-          return <span onClick={(e) => selectSuggestion(e)} className={styles.suggestion}>{suggestion}</span>
-        })}
-      </div>
-    )
+    if (uniqueSuggestionsArr.length > 0) {
+      return (
+        <div className={styles.suggestions_container}>
+          {uniqueSuggestionsArr.slice(0, 5).map((suggestion: any) => {
+            return <span onClick={(e) => selectSuggestion(e)} className={styles.suggestion}>{suggestion}</span>
+          })}
+        </div>
+      )
+    } else {
+      return (
+        <div className={styles.suggestions_container}>
+            <span className={styles.suggestion}>No suggestions found</span>
+        </div>
+      )
+    }
   }
 
   return (
@@ -85,7 +91,6 @@ const SearchBar = ({ containerStyling }: any) => {
       onChange={(e) => setSearchQuery(e)} 
       className={styles.search_bar} 
       value={query}
-      list="photos_list" 
       type="text" 
       placeholder="Search free high-resolution photos" 
       required />

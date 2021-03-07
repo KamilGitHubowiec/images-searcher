@@ -8,6 +8,7 @@ import { getPhotosUrl } from "../../helpers/API";
 import { Icons } from "../../helpers/Icons";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import PopupModal from "../../components/PopupModal/PopupModal";
+import WordsSlider from "../../components/WordSlider/WordsSlider";
 
 const ResultsPage: React.FC = () => {
   const { query }: any = useParams();
@@ -77,12 +78,13 @@ const ResultsPage: React.FC = () => {
       <div className={styles.results_container}>
         <div className={styles.results_header}>
           <h1>{query.charAt(0).toUpperCase() + query.slice(1).toLowerCase()}</h1>
+          <WordsSlider />
         </div>
           <InfiniteScroll 
             dataLength={photos.length} 
             hasMore={true} 
             next={() => setPage(page + 1)} 
-            loader={"...loading"}
+            loader={"Make something awesome"}
             className={styles.results_grid}>
               <div>
                 {columnWithPhotos(0, columnsToDisplay)}

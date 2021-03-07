@@ -28,6 +28,11 @@
     margin-bottom: 7.2rem;
     font-size: 2.4rem;
     color: #111;
+    overflow: hidden;
+
+    h1 {
+      margin-bottom: 1.6rem;
+    }
 
     @include respond(phone-wide) {
       font-size: 1.6rem;

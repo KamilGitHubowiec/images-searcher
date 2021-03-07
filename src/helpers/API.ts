@@ -11,3 +11,7 @@ export const getPhotoUrl= (id: string) => {
 export const getRandomPhotoUrl = () => {
   return `https://api.unsplash.com/photos/random?client_id=${APP_ACCESS_KEY}`;
 }
+
+export const getTopicsUrl = () => {
+  return `https://api.unsplash.com/topics?client_id=${APP_ACCESS_KEY}`;
+}

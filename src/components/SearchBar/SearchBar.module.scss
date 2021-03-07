@@ -10,7 +10,8 @@
 
   &:focus-within {
     .suggestions_container {
-      display: flex;
+      visibility: visible;
+      opacity: 1;
     }
   }
 
@@ -51,7 +52,8 @@
     background-color: #fff;
 
     .suggestions_container {
-      display: flex;
+      visibility: visible;
+      opacity: 1;
     }
   }
 
@@ -82,13 +84,17 @@
 .suggestions_container {
   position: absolute;
   left: 0;
-  display: none;
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
   flex-direction: column;
   width: 100%;
   padding: .8rem 0;
   border: 1px solid #d1d1d1;
   border-radius: .4rem;
+  box-shadow:0 2px 4px 0 rgba(0, 0, 0, 0.041), 0 0 0 1px rgba(0,0,0,0.03);
   color: #111;
+  transition: all .2s;
 
   .suggestion {
     width: 100%;
